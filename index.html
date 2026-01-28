@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simon Neon</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- START SCREEN -->
+  <div id="start-screen" class="show">
+    <!-- Side Characters -->
+    <div class="side-character left">🧸</div>
+    <div class="side-character right">🐰</div>
+
+    <!-- Mascot -->
+    <div class="mascot">🐱✨</div>
+
+    <h1>SIMON SAYS</h1>
+    <p>
+      Watch the lights 👀<br>
+      Remember the order 🧠<br>
+      Tap correctly 🎯
+    </p>
+
+    <button id="start-btn">START GAME</button>
+    <p class="hint">(Press <b>T</b> secretly to reset high score 🤫)</p>
+  </div>
+
+  <!-- GAME SCREEN -->
+  <div id="game-screen" class="hidden">
+    <h2 id="level-text">Level 0</h2>
+    <h3 id="high-score">High Score: 0</h3>
+
+     <!-- RESTART BUTTON -->
+    <button id="restart-btn" class="hidden">Restart Game</button>
+
+     <!--Floating Character-->
+    <div class="game-character top-left">🧸</div>
+    <div class="game-character top-right">🐰</div>
+    <div class="game-character bottom-left">🐼</div>
+    <div class="game-character bottom-right">🦁</div>
+
+    <!-- <div class="game-character right1">🐨</div>
+    <div class="game-character right1">🦊</div> -->
+
+    <div class="game-board">
+      <div class="btn red" id="red"></div>
+      <div class="btn green" id="green"></div>
+      <div class="btn yellow" id="yellow"></div>
+      <div class="btn blue" id="blue"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
