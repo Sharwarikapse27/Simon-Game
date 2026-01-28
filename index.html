@@ -8,12 +8,10 @@
 <body>
 
   <!-- START SCREEN -->
-  <div id="start-screen" class="show">
-    <!-- Side Characters -->
+  <div id="start-screen">
     <div class="side-character left">🧸</div>
     <div class="side-character right">🐰</div>
 
-    <!-- Mascot -->
     <div class="mascot">🐱✨</div>
 
     <h1>SIMON SAYS</h1>
@@ -27,28 +25,34 @@
     <p class="hint">(Press <b>T</b> secretly to reset high score 🤫)</p>
   </div>
 
+  <!-- LEVEL POPUP -->
+  <div id="level-popup" class="hidden"> 
+    <h2>Select Difficulty</h2><br>
+    <button id="easy-btn">Easy (4 Colors)</button><br>
+    <button id="medium-btn">Intermediate (5 Colors)</button><br>
+    <button id="hard-btn">Expert (6 Colors)</button>
+  </div>
+
   <!-- GAME SCREEN -->
   <div id="game-screen" class="hidden">
     <h2 id="level-text">Level 0</h2>
     <h3 id="high-score">High Score: 0</h3>
 
-     <!-- RESTART BUTTON -->
     <button id="restart-btn" class="hidden">Restart Game</button>
 
-     <!--Floating Character-->
-    <div class="game-character top-left">🧸</div>
-    <div class="game-character top-right">🐰</div>
-    <div class="game-character bottom-left">🐼</div>
-    <div class="game-character bottom-right">🦁</div>
+  <!--Floating Character-->
+  <div class="game-character top-left">🧸</div>
+  <div class="game-character top-right">🐰</div>
+  <div class="game-character bottom-left">🐼</div>
+  <div class="game-character bottom-right">🦁</div>
 
-    <!-- <div class="game-character right1">🐨</div>
-    <div class="game-character right1">🦊</div> -->
-
-    <div class="game-board">
+    <div class="game-board" id="game-board">
       <div class="btn red" id="red"></div>
       <div class="btn green" id="green"></div>
       <div class="btn yellow" id="yellow"></div>
       <div class="btn blue" id="blue"></div>
+      <div class="btn purple hidden" id="purple"></div>
+      <div class="btn orange hidden" id="orange"></div>
     </div>
   </div>
 
