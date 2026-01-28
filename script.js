@@ -26,6 +26,8 @@ const startScreen = document.getElementById("start-screen");
 const gameScreen = document.getElementById("game-screen");
 const startBtn = document.getElementById("start-btn");
 const restartBtn = document.getElementById("restart-btn");
+const homeBtn = document.getElementById("home-btn");
+
 
 const levelText = document.getElementById("level-text");
 const highScoreText = document.getElementById("high-score");
@@ -45,7 +47,7 @@ let levelChosen = false;
 startBtn.addEventListener("click", () => {
   startScreen.classList.add("hidden");
   gameScreen.classList.remove("hidden");
-  restartBtn.classList.add("hidden");
+  restartBtn.classList.remove("hidden");
 
   if (!levelChosen) levelPopup.classList.remove("hidden");
   else startGame();
@@ -122,8 +124,11 @@ function startGame() {
   level = 0;
   gameSeq = [];
   userSeq = [];
+  homeBtn.classList.add("hidden");   // 👈 important
+  restartBtn.classList.add("hidden");
   levelUp();
 }
+
 
 /* ================= GAME LOGIC ================= */
 function levelUp() {
@@ -191,6 +196,7 @@ function gameOver() {
   levelText.innerHTML = `💀 Game Over<br>Score: ${score}`;
   highScoreText.innerText = `High Score: ${highScores[difficulty]}`;
   restartBtn.classList.remove("hidden");
+  homeBtn.classList.remove("hidden");
 }
 
 /* ================= RESTART ================= */
@@ -198,6 +204,23 @@ restartBtn.onclick = () => {
   restartBtn.classList.add("hidden");
   startGame();
 };
+
+/* ================= HOME BUTTON ================= */
+homeBtn.onclick = () => {
+  started = false;
+  level = 0;
+  gameSeq = [];
+  userSeq = [];
+
+  gameScreen.classList.add("hidden");
+  startScreen.classList.remove("hidden");
+  levelPopup.classList.remove("hidden");
+
+  restartBtn.classList.add("hidden");
+  homeBtn.classList.add("hidden");
+};
+
+
 
 /* ================= HIGH SCORE RESET ================= */
 document.addEventListener("keydown", (e) => {

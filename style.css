@@ -142,6 +142,25 @@ body {
 
 #restart-btn:hover { transform: scale(1.05); }
 
+#home-btn {
+  margin-top: 15px;
+  margin-left: 20px;
+  padding: 10px 25px;
+  font-size: 1rem;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(45deg, #4facfe, #00f2ff);
+  color: black;
+  box-shadow: 0 0 15px #00f2ff;
+  transition: transform 0.2s;
+}
+
+#home-btn:hover {
+  transform: scale(1.05);
+}
+
+
 /* GAME BOARD */
 .game-board {
   display: grid;
@@ -156,9 +175,9 @@ body {
 
 /*Game Character bounce */
 .game-character {
-  position: absolute;
+  position: fixed;
   font-size: 10rem;
-  animation: floatInSide 3s ease-in-out infinite;
+  animation: floatInSide 2.5s ease-in-out infinite;
   opacity: 0.8;
   pointer-events: none;
 }
@@ -166,25 +185,23 @@ body {
 .game-character.top-left {
   left: 20%;
   top: 20%;
-  transform: translateY(50%);
 }
 
 .game-character.top-right {
   right: 0;
   top: 20%;
-  transform: translateY(50%);
 }
 
 .game-character.bottom-left {
   left: 0;
   bottom: 6%;
-  transform: translateY(50%);
 }
+
 .game-character.bottom-right {
   right: 15%;
   bottom: 6%;
-  transform: translateY(50%);
 }
+
 
 .btn {
   width: 140px;
