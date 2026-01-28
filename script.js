@@ -33,9 +33,12 @@ const levelText = document.getElementById("level-text");
 const highScoreText = document.getElementById("high-score");
 
 const levelPopup = document.getElementById("level-popup");
+const overlay = document.getElementById("overlay");
 const easyBtn = document.getElementById("easy-btn");
 const mediumBtn = document.getElementById("medium-btn");
 const hardBtn = document.getElementById("hard-btn");
+const goHomeLink = document.getElementById("go-home-link");
+
 
 const gameBoard = document.querySelector(".game-board");
 
@@ -43,15 +46,36 @@ highScoreText.innerText = `High Score: ${highScores[difficulty]}`;
 
 let levelChosen = false;
 
+goHomeLink.onclick = () => {
+  // Close popup smoothly
+  levelPopup.classList.remove("active");
+  overlay.classList.remove("active");
+
+  setTimeout(() => {
+    levelPopup.classList.add("hidden");
+    overlay.classList.add("hidden");
+  }, 300);
+
+  // Reuse existing home logic
+  homeBtn.onclick();
+};
+
 /* ================= START BUTTON ================= */
 startBtn.addEventListener("click", () => {
   startScreen.classList.add("hidden");
   gameScreen.classList.remove("hidden");
-  restartBtn.classList.remove("hidden");
 
-  if (!levelChosen) levelPopup.classList.remove("hidden");
-  else startGame();
+  if (!levelChosen) {
+    overlay.classList.remove("hidden");
+    setTimeout(() => overlay.classList.add("active"), 10);
+
+    levelPopup.classList.remove("hidden");
+    setTimeout(() => levelPopup.classList.add("active"), 10);
+  } else {
+    startGame();
+  }
 });
+
 
 /* ================= LAYOUT RESET ================= */
 function resetLayoutClasses() {
@@ -112,10 +136,20 @@ function selectLevel(levelName) {
     else btn.classList.add("hidden");
   });
 
+  
+
+
   highScoreText.innerText = `High Score: ${highScores[difficulty]}`;
 
-  levelPopup.classList.add("hidden");
-  startGame();
+  levelPopup.classList.remove("active");
+  overlay.classList.remove("active");
+
+  setTimeout(() => {
+    levelPopup.classList.add("hidden");
+    overlay.classList.add("hidden");
+    startGame();
+  }, 350);
+
 }
 
 /* ================= START GAME ================= */
@@ -214,11 +248,17 @@ homeBtn.onclick = () => {
 
   gameScreen.classList.add("hidden");
   startScreen.classList.remove("hidden");
+
+  overlay.classList.remove("hidden");
+  setTimeout(() => overlay.classList.add("active"), 10);
+
   levelPopup.classList.remove("hidden");
+  setTimeout(() => levelPopup.classList.add("active"), 10);
 
   restartBtn.classList.add("hidden");
   homeBtn.classList.add("hidden");
 };
+
 
 
 

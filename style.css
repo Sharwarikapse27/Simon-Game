@@ -9,10 +9,20 @@ body {
   background: radial-gradient(circle at top, #0f2027, #000);
   min-height: 100vh;
   color: white;
+
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
+.main {
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
+
 
 /* START SCREEN */
 #start-screen {
@@ -20,6 +30,8 @@ body {
   padding: 60px 180px;
   text-align: center;
   animation: fadeIn 1s ease;
+  justify-content: center;
+  align-items: center;
 }
 
 #start-screen h1 {
@@ -63,26 +75,21 @@ body {
   animation: bounce 2s infinite;
 }
 
-/* SIDE CHARACTERS */
-.side-character {
-  position: absolute;
-  font-size: 10rem;
-  animation: float 3s ease-in-out infinite;
-  opacity: 0.9;
-  pointer-events: none;
+#overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 90;
+  opacity: 0;
+  transition: opacity 0.35s ease;
 }
 
-.side-character.left {
-  left: 0;
-  top: 48%;
-  transform: translateY(-50%);
+/* when active */
+#overlay.active {
+  opacity: 1;
 }
 
-.side-character.right {
-  right: 0;
-  top: 48%;
-  transform: translateY(-50%);
-}
 
 /* LEVEL POPUP */
 #level-popup {
@@ -115,6 +122,19 @@ body {
   transform: scale(1.1);
 }
 
+#go-home-link {
+  font-size: 12px;
+  margin-top: 6px;
+  text-decoration: underline;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+#go-home-link:hover {
+  opacity: 1;
+}
+
+
 /* GAME SCREEN */
 .hidden { display: none; }
 
@@ -122,6 +142,9 @@ body {
   text-align: center;
   animation: slideUp 0.8s ease;
   margin-bottom: 50px;
+
+  justify-content: center;
+  align-items: center;
 }
 
 #level-text { font-size: 3rem; margin-bottom:10px; }
@@ -173,6 +196,13 @@ body {
   margin-top: 40px;
 }
 
+#floating-characters {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+
 /*Game Character bounce */
 .game-character {
   position: fixed;
@@ -180,6 +210,7 @@ body {
   animation: floatInSide 2.5s ease-in-out infinite;
   opacity: 0.8;
   pointer-events: none;
+  animation-fill-mode: both;
 }
 
 .game-character.top-left {
